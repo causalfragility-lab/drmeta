@@ -1,0 +1,35 @@
+Package: drmeta
+Title: Design-Robust Meta-Analysis via Variance-Function Models
+Version: 0.1.0
+Authors@R:
+    person("Subir", "Hait",
+           email = "haitsubi@msu.edu",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0004-9871-9677"))
+Description: Implements Design-Robust Meta-Analysis (DR-Meta), a
+    variance-function random-effects framework for meta-analysis in which
+    between-study heterogeneity depends on a study-level design robustness
+    index. Provides profiled restricted maximum likelihood estimation,
+    study weights, heterogeneity diagnostics, influence analysis, and
+    graphical tools. The framework nests classical fixed-effects and
+    random-effects meta-analysis as special cases.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    grDevices,
+    graphics,
+    stats,
+    utils
+Suggests:
+    ggplot2 (>= 3.4.0),
+    knitr,
+    metafor (>= 4.0.0),
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+URL: https://github.com/causalfragility-lab/drmeta
+BugReports: https://github.com/causalfragility-lab/drmeta/issues
