@@ -11,6 +11,12 @@
 
 \item{...}{Ignored.}
 }
+\value{
+A named numeric vector of length 3 with the estimated model
+parameters: \code{mu} (pooled effect estimate), \code{tau0sq}
+(baseline between-study variance at DR = 0), and \code{gamma}
+(variance-function decay rate).
+}
 \description{
 Returns a named numeric vector of the three model parameters:
 \code{mu}, \code{tau0sq}, and \code{gamma}.

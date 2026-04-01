@@ -13,6 +13,11 @@
 
 \item{...}{Ignored.}
 }
+\value{
+Invisibly returns the original \code{drmeta} object \code{x},
+unchanged. This function is called for its side effect of printing a
+formatted summary of the fitted DR-Meta model to the console.
+}
 \description{
 Print Method for drmeta Objects
 }

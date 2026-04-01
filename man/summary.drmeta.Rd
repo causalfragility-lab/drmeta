@@ -13,6 +13,12 @@
 
 \item{...}{Ignored.}
 }
+\value{
+Invisibly returns the fitted \code{drmeta} object \code{object},
+unchanged. Called for its side effect of printing a detailed formatted
+summary — including the pooled estimate, confidence interval, z-test,
+variance-function parameters, and model fit statistics — to the console.
+}
 \description{
 Summary Method for drmeta Objects
 }

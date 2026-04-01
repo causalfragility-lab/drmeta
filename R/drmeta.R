@@ -267,6 +267,9 @@ drmeta <- function(yi, vi, dr = NULL,
 #' @param x A fitted `"drmeta"` object.
 #' @param digits Number of significant digits.  Default 4.
 #' @param ... Ignored.
+#' @return Invisibly returns the original \code{drmeta} object \code{x},
+#'   unchanged. This function is called for its side effect of printing a
+#'   formatted summary of the fitted DR-Meta model to the console.
 #' @export
 print.drmeta <- function(x, digits = 4, ...) {
   cat("\n--- DR-Meta: Design-Robust Random-Effects Model ---\n\n")
@@ -293,6 +296,10 @@ print.drmeta <- function(x, digits = 4, ...) {
 #' @param object A fitted `"drmeta"` object.
 #' @param digits Number of significant digits.  Default 4.
 #' @param ... Ignored.
+#' @return Invisibly returns the fitted \code{drmeta} object \code{object},
+#'   unchanged. Called for its side effect of printing a detailed formatted
+#'   summary — including the pooled estimate, confidence interval, z-test,
+#'   variance-function parameters, and model fit statistics — to the console.
 #' @export
 summary.drmeta <- function(object, digits = 4, ...) {
   cat("\n=== DR-Meta Summary ===\n\n")
@@ -334,6 +341,10 @@ summary.drmeta <- function(object, digits = 4, ...) {
 #'
 #' @param object A fitted `"drmeta"` object.
 #' @param ... Ignored.
+#' @return A named numeric vector of length 3 with the estimated model
+#'   parameters: \code{mu} (pooled effect estimate), \code{tau0sq}
+#'   (baseline between-study variance at DR = 0), and \code{gamma}
+#'   (variance-function decay rate).
 #' @export
 coef.drmeta <- function(object, ...) {
   c(mu = object$mu, tau0sq = object$tau0sq, gamma = object$gamma)
@@ -349,6 +360,10 @@ coef.drmeta <- function(object, ...) {
 #' @param parm Ignored (only `mu` is returned).
 #' @param level Confidence level.  Default 0.95.
 #' @param ... Ignored.
+#' @return A data frame with one row (\code{mu}) and three columns:
+#'   \code{estimate} (the pooled effect \eqn{\hat\mu}), \code{lower},
+#'   and \code{upper} (confidence interval bounds at the requested
+#'   \code{level}, default 95\%).
 #' @export
 confint.drmeta <- function(object, parm = NULL, level = 0.95, ...) {
   alpha <- 1 - level
@@ -370,6 +385,9 @@ confint.drmeta <- function(object, parm = NULL, level = 0.95, ...) {
 #'
 #' @param object A fitted `"drmeta"` object.
 #' @param ... Ignored.
+#' @return A numeric vector of length \eqn{k} where every element equals
+#'   the pooled estimate \eqn{\hat\mu}. Because DR-Meta has a single
+#'   intercept, all studies share the same fitted value.
 #' @export
 fitted.drmeta <- function(object, ...) {
   rep(object$mu, object$k)
@@ -381,6 +399,11 @@ fitted.drmeta <- function(object, ...) {
 #' @param object A fitted `"drmeta"` object.
 #' @param type `"raw"` (default) or `"standardised"`.
 #' @param ... Ignored.
+#' @return A numeric vector of length \eqn{k} of residuals. When
+#'   \code{type = "raw"} (default), returns observed minus fitted values
+#'   (\eqn{y_i - \hat\mu}). When \code{type = "standardised"}, each
+#'   residual is divided by \eqn{\sqrt{\hat\sigma^2_i}} (the square root
+#'   of the total study variance under the fitted model).
 #' @export
 residuals.drmeta <- function(object, type = c("raw", "standardised"), ...) {
   type  <- match.arg(type)
@@ -396,6 +419,11 @@ residuals.drmeta <- function(object, type = c("raw", "standardised"), ...) {
 #' @param REML Logical.  If `TRUE`, returns the REML log-likelihood.
 #'   Default `FALSE` (ML).
 #' @param ... Ignored.
+#' @return An object of class \code{"logLik"}. The numeric value is the
+#'   maximised log-likelihood (ML or REML, depending on \code{REML}).
+#'   The object carries two attributes: \code{df} (number of parameters,
+#'   always 3: \code{mu}, \code{tau0sq}, \code{gamma}) and \code{nobs}
+#'   (number of studies \eqn{k}).
 #' @export
 logLik.drmeta <- function(object, REML = FALSE, ...) {
   val <- if (REML) object$reml_loglik else object$loglik

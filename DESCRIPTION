@@ -7,12 +7,18 @@ Authors@R:
            role = c("aut", "cre"),
            comment = c(ORCID = "0009-0004-9871-9677"))
 Description: Implements Design-Robust Meta-Analysis (DR-Meta), a
-    variance-function random-effects framework for meta-analysis in which
-    between-study heterogeneity depends on a study-level design robustness
-    index. Provides profiled restricted maximum likelihood estimation,
-    study weights, heterogeneity diagnostics, influence analysis, and
-    graphical tools. The framework nests classical fixed-effects and
-    random-effects meta-analysis as special cases.
+    variance-function random-effects framework in which between-study
+    heterogeneity is modelled as a function of a study-level design
+    robustness index, allowing heterogeneity to depend systematically on
+    study quality or design strength rather than being treated as a single
+    nuisance parameter. The package provides profiled restricted maximum
+    likelihood (REML) estimation of the overall effect and
+    variance-function parameters, study-specific weights, heterogeneity
+    diagnostics (tau-squared, I-squared), influence and leave-one-out
+    analysis, and graphical tools including forest plots and influence
+    plots. The DR-Meta framework nests classical fixed-effects and
+    standard random-effects meta-analysis as special cases, making it a
+    strict generalisation of existing approaches.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -33,3 +39,7 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/causalfragility-lab/drmeta
 BugReports: https://github.com/causalfragility-lab/drmeta/issues
+ 
+
+ 
+ 

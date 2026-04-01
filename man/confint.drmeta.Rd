@@ -15,6 +15,12 @@
 
 \item{...}{Ignored.}
 }
+\value{
+A data frame with one row (\code{mu}) and three columns:
+\code{estimate} (the pooled effect \eqn{\hat\mu}), \code{lower},
+and \code{upper} (confidence interval bounds at the requested
+\code{level}, default 95\\%).
+}
 \description{
 Returns a data frame with the estimate and 95\% confidence interval for
 the pooled effect \eqn{\hat\mu}.

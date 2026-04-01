@@ -14,6 +14,13 @@ Default \code{FALSE} (ML).}
 
 \item{...}{Ignored.}
 }
+\value{
+An object of class \code{"logLik"}. The numeric value is the
+maximised log-likelihood (ML or REML, depending on \code{REML}).
+The object carries two attributes: \code{df} (number of parameters,
+always 3: \code{mu}, \code{tau0sq}, \code{gamma}) and \code{nobs}
+(number of studies \eqn{k}).
+}
 \description{
 Log-Likelihood for a drmeta Object
 }

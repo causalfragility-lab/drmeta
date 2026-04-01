@@ -11,6 +11,11 @@
 
 \item{...}{Ignored.}
 }
+\value{
+A numeric vector of length \eqn{k} where every element equals
+the pooled estimate \eqn{\hat\mu}. Because DR-Meta has a single
+intercept, all studies share the same fitted value.
+}
 \description{
 Returns a vector of length \eqn{k} where every element equals the pooled
 estimate \eqn{\hat\mu} (the model has a single intercept, so all fitted

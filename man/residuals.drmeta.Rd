@@ -13,6 +13,13 @@
 
 \item{...}{Ignored.}
 }
+\value{
+A numeric vector of length \eqn{k} of residuals. When
+\code{type = "raw"} (default), returns observed minus fitted values
+(\eqn{y_i - \hat\mu}). When \code{type = "standardised"}, each
+residual is divided by \eqn{\sqrt{\hat\sigma^2_i}} (the square root
+of the total study variance under the fitted model).
+}
 \description{
 Residuals for a drmeta Object
 }

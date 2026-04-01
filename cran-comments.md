@@ -10,3 +10,9 @@
 * NOTE: "New submission" — this is expected for a first CRAN submission.
 * The manuscript cited in DESCRIPTION (Hait, 2026) is an unpublished
   working paper; a DOI will be added upon publication.
+
+
+
+
+
+
