@@ -86,3 +86,15 @@ test_that("input validation rejects malformed data", {
   expect_error(drmeta(1:5, rep(.1, 5), seq(0, 2, length.out = 5)), "\\[0,1\\]")
   expect_error(drmeta(1:2, rep(.1, 2), c(0, 1)), "at least three")
 })
+
+test_that("bootstrap short-circuits at the boundary", {
+  path <- system.file("extdata", "bcg_design_robustness.csv", package = "drmeta")
+  bcg <- utils::read.csv(path)
+  fit <- drmeta(bcg[["yi"]], bcg[["vi"]], bcg[["dr"]], .quiet = TRUE)
+  expect_equal(fit$gamma, 0)
+  b <- drmeta_bootstrap_gamma(fit, B = 99, seed = 1)
+  expect_true(b$boundary)
+  expect_equal(b$statistic, 0)
+  expect_equal(b$p.value, 1)
+  expect_equal(b$B_used, 0L)
+})

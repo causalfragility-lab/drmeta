@@ -9,7 +9,8 @@ drmeta_bootstrap_gamma(
   B = 999,
   seed = NULL,
   parallel = FALSE,
-  ncpus = 2L
+  ncpus = 2L,
+  tol = 1e-08
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ drmeta_bootstrap_gamma(
 \item{parallel}{Logical; use mclapply on non-Windows platforms.}
 
 \item{ncpus}{Number of cores when parallel is TRUE.}
+
+\item{tol}{Tolerance below which the observed likelihood-ratio statistic is
+treated as exactly zero.}
 }
 \value{
 An object of class drmeta_bootstrap_gamma, a list with components
@@ -29,8 +33,10 @@ An object of class drmeta_bootstrap_gamma, a list with components
 \code{B} (requested replicates), \code{B_used} (replicates in which both
 refits converged), \code{n_failed} (replicates discarded),
 \code{simulated} (the simulated statistics, with NA for failed
-replicates), \code{null} (the fitted null model), and \code{alternative}
-(the supplied fit).
+replicates), \code{null} (the fitted null model), \code{alternative}
+(the supplied fit), and \code{boundary}, a logical flag that is TRUE when
+the constrained estimate already lies at gamma = 0 and no bootstrap was
+run.
 }
 \description{
 Tests H0: gamma = 0 against H1: gamma > 0. The null lies on the boundary of
@@ -44,6 +50,19 @@ Replicates in which either refit fails to converge are discarded
 rather than contributing a statistic computed at a non-optimal point. The
 p-value uses the number of usable replicates as its denominator, and the
 discarded count is returned so the loss is visible.
+
+When the constrained estimate is already at the boundary, the null and
+alternative fits coincide and the observed statistic is zero by
+construction. Bootstrapping in that situation would compare zero against
+a simulated distribution with a large point mass at zero, and would return
+a p-value that looks like evidence but only records the proportion of
+replicates that also reached the boundary. The function therefore
+short-circuits, returns \code{p.value = 1} with \code{boundary = TRUE},
+and runs no replicates. A boundary estimate means the data provide no
+support for a positive scale gradient; it is not a measured degree of
+evidence. Fit with \code{constrained = FALSE} to see whether the
+unrestricted gradient is negative, which would contradict the substantive
+constraint rather than merely fail to support it.
 
 When \code{parallel = TRUE}, reproducibility across cores requires the
 L'Ecuyer-CMRG generator, which this function sets and restores when a
