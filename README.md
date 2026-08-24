@@ -74,7 +74,7 @@ exploratory analysis.
 
 ## Status
 
-Current version 0.2.1. `NEWS.md` documents the breaking changes from
+Current version 0.2.2. `NEWS.md` documents the breaking changes from
 0.1.0, including the functions removed and the withdrawal of the
 design-explained variance decomposition, and the 0.2.1 change to
 `drmeta_bootstrap_gamma()`, which now short-circuits when the constrained
