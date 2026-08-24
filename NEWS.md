@@ -1,3 +1,8 @@
+# drmeta 0.2.2
+
+* Documentation update and archival release. No changes to package code.
+
+
 # drmeta 0.2.1
 
 ## Behavior changes

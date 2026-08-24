@@ -1,7 +1,7 @@
 Package: drmeta
 Type: Package
 Title: Design-Indexed Location-Scale Meta-Analysis
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: person(
     given = "Subir",
     family = "Hait",
