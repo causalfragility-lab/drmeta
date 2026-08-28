@@ -44,7 +44,8 @@ For an exact versioned GitHub installation:
 ```r
 remotes::install_github(
   "causalfragility-lab/drmeta",
-  ref = "v0.2.2"
+  ref = "v0.2.2",
+  upgrade = "never"
 )
 ```
 
