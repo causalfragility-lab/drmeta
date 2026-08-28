@@ -1,4 +1,6 @@
 # drmeta
+install.packages("drmeta")
+library(drmeta)
 
 **Design-Indexed Location-Scale Meta-Analysis**
 
